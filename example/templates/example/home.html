@@ -1,0 +1,46 @@
+{%extends 'example/base.html' %}
+
+
+{%block content%}
+
+<h1>To do Items</h1>
+<div>
+  <p></p>
+</div>
+<div class="row mt-4">
+</div>
+<div class="row mt-4">
+  <div class="col">
+    <form  method="post" action="add_todo/" class="form-inline"> 
+    <input type="text" name ="contents" class="form-control mb-2 mr-sm-2" placeholder="Add a Todo">
+    <button class="btn btn-outline-primary" type="submit">Submit</button>
+
+
+  </form>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="row mt-4">
+    <ul class="list-group">
+      {%for todo in Todo_list%}
+
+              
+      <li class="list-group-item">{{todo.text}}
+        <form action="delete_todo/{{todo.id}}">
+        <div class="float-right"> 
+          
+          <button class="btn btn-outline-danger" type="submit">
+            Delete</button>
+         
+        </div>
+      </form>
+      </li>
+
+   
+    {%endfor%}
+  </ul>
+
+  </div>
+</div>
+  
+  {%endblock content%}
