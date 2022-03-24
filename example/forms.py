@@ -9,3 +9,4 @@ class UserPostForm(UserCreationForm):
         model = Post
         fields = ['name']
     
+ 

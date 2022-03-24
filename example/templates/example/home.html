@@ -11,11 +11,11 @@
 </div>
 <div class="row mt-4">
   <div class="col">
-    <form  method="post" action="add_todo/" class="form-inline"> 
+    <form  method="post" action="add_todo/" class="form-inline" enctype="multipart/form-data"> 
     <input type="text" name ="contents" class="form-control mb-2 mr-sm-2" placeholder="Add a Todo">
     <button class="btn btn-outline-primary" type="submit">Submit</button>
 
-
+{%csrf_token%}
   </form>
   </div>
 </div>
@@ -28,7 +28,8 @@
       <li class="list-group-item">{{todo.text}}
         <form action="delete_todo/{{todo.id}}">
         <div class="float-right"> 
-          
+          {%for todo in Todo_list%}
+
           <button class="btn btn-outline-danger" type="submit">
             Delete</button>
          

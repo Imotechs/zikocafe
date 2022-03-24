@@ -19,14 +19,22 @@ from payment.views import (
     CreatCheckoutSessionView, 
     ProductLandingView,
     PaymentFails,
-    PaymentSucces
+    PaymentSucces,
+    RemitaPayment,
+    PagaPayment,
+    FlutterPayView,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('example.urls')),
     path('create-checkout-session/<int:pk>/', CreatCheckoutSessionView.as_view(), name = 'create_checkout'),
-    path('payment/', ProductLandingView.as_view(), name = 'landing_page'),
+    path('payment/<int:pk>/', ProductLandingView.as_view(), name = 'landing_page'),
     path('success/', PaymentSucces.as_view(), name = 'success'),
     path('failure/', PaymentFails.as_view(), name = 'failure'),
+    path('remita_gateway/', RemitaPayment.as_view(), name = 'remita'),
+    path('paga_gateway/', PagaPayment.as_view(), name ='paga'),
+    path('fluter_gateway/', FlutterPayView.as_view(), name = 'fluter'),
+
+
 ]

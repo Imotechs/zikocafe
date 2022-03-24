@@ -1,0 +1,33 @@
+{%extends 'example/base.html'%}
+{% block content %}
+<div class="content-section">
+
+    <form action="https://mymarket/payment/complete" method="POST">
+        {% csrf_token %}
+        <script src="https://beta.mypaga.com/checkout/?w=150&h=40"
+          data-charge_url="https://mymarket/payment/complete"
+          data-redirect_url_method ="GET"
+          data-public_key="660FDDCB-A5D9-420D-94A5-956C7B0071F8"
+          data-amount="1000.00"
+          data-currency="NGN"
+          data-payment_reference="JHX-18743567"
+          data-account_number="41007258779"
+          data-product_description="Gelly Giraffe"
+          data-phone_number="+251911514855"
+          data-email="customer@mymarket.com"
+          data-product_codes="XBR-652394"
+          data-display_image="https://mymarket/cdn//img/icon.png"
+          data-display_name="Shem’s Shoes"
+          data-display_tagline="Walk the Talk"
+          data-button_label="Pay With Paga"
+          data-width="200"
+          data-callback_url="http://localhost:8080/paga_gateway/"
+          data-funding_sources="BANK,CARD,PAGA">
+        </script>
+      </form>
+     
+      https://fivekaycooded.com.ng/wp-content/uploads/2021/10/unnamed.jpg
+      
+</div>
+
+{% endblock content %}

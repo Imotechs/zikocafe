@@ -1,0 +1,21 @@
+{%extends 'example/main.html' %}
+
+
+{%block content%}
+<div> </div>
+<div> </div>
+<h1>Add  a Job Done</h1>
+<form method="post" enctype="multipart/form-data">
+    <fieldset><legend>
+        Add a Job Done
+    </legend>
+{%csrf_token%}
+
+{{form.as_p}}
+<button type="submit">Submit</button>
+</fieldset>
+</form>
+
+
+  
+  {%endblock content%}

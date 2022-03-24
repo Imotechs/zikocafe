@@ -1,0 +1,65 @@
+{%extends 'example/main.html' %}
+{% load crispy_forms_tags %}
+
+{%block content%}
+<div class="text-center text-lg-start">
+    <h3 class="display-3 fw-bold text-shadow">Do <strong style="color:aqua"> You</strong> &nbsp; really wand to Logout?</h3>
+    <h4 class=" text-shadow">Do <strong style="color:aqua">Enjoy</strong> Our Services
+    </h4>
+    </div>
+<form method="post" enctype="multipart/form-data">
+    <fieldset><legend>
+    </legend>
+{%csrf_token%}
+{{form|crispy}}
+<button class="loginbtn"type="submit">Yes Logout</button>
+<button class="loginbt"type="cancell"><a href=" {%url 'home'%}">Not Really</button></a>
+<p >
+    <small>Dont Have account yet? <a style="color: aqua;"href="{%url 'register'%}"> Register</a></small>
+</p>
+
+<p>
+    <small>i already have account <a  style="color: aqua;" href="{%url 'login'%}"> Login</a></small>
+</p>
+
+</fieldset>
+</form>
+
+<style>
+    .loginbtn{
+        margin-left: 30%;
+        margin-top: 2%;
+        width: 90px;
+        height: 40px;
+        border-radius: 8px;
+        background-color: rgb(209, 206, 19);
+
+
+    }
+    .loginbtn:hover{
+        margin-left: 31%;
+        margin-top: 2%;
+        width: 95px;
+        height: 40px;
+        background-color: rgb(250, 13, 13);
+
+
+    }
+
+    .loginbt{
+        margin-left: 30%;
+        margin-top: 2%;
+        width: 90px;
+        height: 40px;
+        border-radius: 8px;
+        background-color: rgb(11, 229, 236);
+
+
+    }
+    .loginb a{
+text-decoration: none;
+font-family: 'Courier New', Courier, monospace;
+    }
+</style>
+  
+  {%endblock content%}

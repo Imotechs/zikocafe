@@ -2,11 +2,14 @@ from django.shortcuts import render,redirect
 from django.template import Context
 from django.views import View
 from django.views.generic import TemplateView
+from django.views.decorators.csrf import csrf_exempt
+from example.models import Job
 import stripe
+import requests
 from django.conf import settings
 from django.http import JsonResponse
 from payment.models import Product
-from django.views.decorators.csrf import csrf_exempt
+
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -19,8 +22,8 @@ class CreatCheckoutSessionView(View):
         # product = Product.objects.get(id=product_id)
         # stripe.Product.create(name=product.name)
         #print(product_price)
-        product_id = self.kwargs["pk"]
-        product = Product.objects.get(id=product_id)
+        product_id = int(self.kwargs["pk"])
+        product = Job.objects.get(id = product_id)
         YOUR_DOMAIN = 'http://127.0.0.1:8000'
 
         try:
@@ -56,7 +59,8 @@ class ProductLandingView(TemplateView):
     product =Product.objects.all()
     template_name = 'payment/landing.html'
     def get_context_data(self, **kwargs: any):
-        product =Product.objects.all()
+        job_id =self.kwargs['pk']
+        product =Job.objects.filter(id = job_id)
         context = super(ProductLandingView,self).get_context_data(**kwargs)
         context.update({
             'product':product,
@@ -69,3 +73,26 @@ class PaymentSucces(TemplateView):
 
 class PaymentFails(TemplateView):
     template_name = 'payment/Failure.html'
+
+class RemitaPayment(TemplateView):
+    template_name = 'payment/remita.html'
+
+class PagaPayment(TemplateView):
+    template_name = 'payment/paga.html'
+
+
+
+def remitagen(request):
+    url = "https://remitademo.net/remita/exapp/api/v1/send/api/uaasvc/uaa/token"
+
+    payload = "{\r\n    \"username\": \"R0Y9ZG0WGAXJMG5S\",\r\n    \"password\": \"SKPX8P97OB7KF4I6U6MBFFZJA92LZX82\"\r\n}"
+    headers = {}
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+    print(response.text)
+
+class FlutterPayView(TemplateView):
+    template_name = 'payment/fluter.html'
+
+
