@@ -1,0 +1,32 @@
+{%extends 'example/main.html' %}
+
+{%load crispy_forms_tags%}
+{%block content%}
+
+<h1>My pending Payments</h1>
+<ol>
+{%for job in context%}
+<li style="padding-top: 30px;">
+
+    <div class="row">
+      <div class="col">
+          
+        
+        {{job.title}} 
+        &nbsp; NGN <strong style="color: rgb(251, 251, 243);"> {{job.price}}</strong>
+        &nbsp;<small> Customer's Name  <strong style="color: rgb(241, 245, 7);">{{job.customer}}</strong></small>
+      </div>
+      <div class="col">
+        <form method="post" action="/make_payment/{{job.id}}/" enctype="multipart/form-data">
+          {%csrf_token%}
+
+          <button class="btn btn-outline-success" name = 'job_id' >Make payment now</button>
+        </form>
+      </div>
+    </div>
+    
+  </li>
+
+  {%endfor%}
+</ol>
+ {%endblock content%}

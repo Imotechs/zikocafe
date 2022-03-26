@@ -1,0 +1,31 @@
+{%extends 'example/main.html' %}
+
+{%load crispy_forms_tags%}
+{%block content%}
+
+<h1>make payment</h1>
+<ol>
+{%for item in context%}
+<li style="padding-top: 30px;">
+
+    <div class="row">
+      <div class="col">
+          
+        
+        {{item.job}} 
+        &nbsp;<small> Payment_id <strong style="color: rgb(241, 245, 7);">{{item.Payment_id}}</strong></small>
+      </div>
+      <div class="col">
+        <form method="post" action="/make_payment/{{item.product_id}}/" enctype="multipart/form-data">
+          {%csrf_token%}
+
+          <button class="btn btn-outline-success" name = 'job_id' >Make payment now</button>
+        </form>
+      </div>
+    </div>
+    
+  </li>
+
+  {%endfor%}
+</ol>
+ {%endblock content%}
