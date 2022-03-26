@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Todo,Job
+from .models import Todo,Job,Payment
 # Register your models here.
 # admin.site.register(Company)
 # admin.site.register(Programmers)
@@ -8,3 +8,4 @@ from .models import Todo,Job
 # admin.site.register(Car)
 admin.site.register(Job)
 admin.site.register(Todo)
+admin.site.register(Payment)

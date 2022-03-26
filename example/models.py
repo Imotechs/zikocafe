@@ -1,9 +1,9 @@
+from urllib import request
 from django.db import models
 from django.forms import BooleanField
 from django.contrib.auth.models import User
 from django.utils import timezone
-from numpy import empty
-
+from django.urls import reverse
 
 # class Company(models.Model):
 #     name = models.CharField(max_length=20)
@@ -67,13 +67,25 @@ class Job(models.Model):
     title = models.CharField(max_length=200)
     price = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
-    customer = models.CharField(max_length=200, default='Admin')
+    customer = models.ForeignKey(User,on_delete=models.CASCADE)
     description = models.CharField(max_length=300, null= True)
 
     def __str__(self):
         return self.title
     
     def get_display_price(self):
+        
         naira =4.19
         dollar = self.price/415.89
         return "{0:.2f}".format(dollar)
+    
+    def get_absolute_url(self):
+        return reverse('home')
+
+  
+class Payment(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    payment_id = models.CharField(max_length=20)
+    is_id = models.BooleanField(default=False)
+    def __str__(self):
+        return self.payment_id

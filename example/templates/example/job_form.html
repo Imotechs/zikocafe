@@ -1,21 +1,38 @@
 {%extends 'example/main.html' %}
 
-
+{%load crispy_forms_tags%}
 {%block content%}
 <div> </div>
 <div> </div>
 <h1>Add  a Job Done</h1>
 <form method="post" enctype="multipart/form-data">
     <fieldset><legend>
-        Add a Job Done
     </legend>
 {%csrf_token%}
 
-{{form.as_p}}
-<button type="submit">Submit</button>
+{{form|crispy}}
+<button type="submit" class="loginbtn">Submit</button>
 </fieldset>
 </form>
 
+<style>
+    .loginbtn{
+        margin-left: 30%;
+        margin-top: 2%;
+        width: 70px;
+        height: 40px;
+        border-radius: 8px;
 
+    }
+    .loginbtn:hover{
+        margin-left: 31%;
+        margin-top: 2%;
+        width: 75px;
+        height: 40px;
+        background-color: aqua;
+
+
+    }
+</style>
   
   {%endblock content%}

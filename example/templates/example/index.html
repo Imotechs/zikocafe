@@ -63,7 +63,9 @@
             </form>
             <ul class="navbar-nav ms-auto">
               <li class="nav-item"><a class="nav-link"  href="{%url 'home'%}">Home</a>
+                
                 <li class="nav-item"><a class="nav-link" href="{%url 'about'%}">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="{%url 'mypay'%}">My Payments</a></li>
 
 
               </li>
@@ -133,13 +135,12 @@
             </div>
                 <div class="container">
                   <div class="row">
+                    <button style="background-color: rgb(100, 170, 103);margin-top: 50px;max-width: 200px; border-radius: 5%;"><a href="{%url 'customeradd'%}" style="color: rgb(248, 248, 8);">
+                      Customer Generate a Reference Number for Payment here</a></button> 
                     {%if user.is_superuser%}
                     <div class="col"><h1 style="padding-top: 50px; color: aqua;">Done Jobs, Pending payments</h1> 
                     </div>
-                    <div class="col">
-                     <button style="background-color: rgb(18, 95, 22);margin-top: 50px;border-radius: 5px;"><a href="{%url 'addjob'%}" style="color: rgb(248, 248, 8);">
-                      Customer Generate Payment here</a></button> 
-                    </div>
+                   
                   </div>
                 <ol>
                 {%for item in todo_list%}

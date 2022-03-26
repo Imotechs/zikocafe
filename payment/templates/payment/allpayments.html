@@ -8,10 +8,12 @@
 {%csrf_token%}
 </form>
 </div>
-
-
 <!-- payment with flutterwave -->
   <div class="content-section">
+   
+    <h2 style="color: black; margin-left: 30%;">Transaction_Id: <strong style="color: blueviolet;">{{context.payment_id}}   
+      {%for item in payments%} {{item.payment_id}}{%endfor%}</h2></strong><small>Pls Coppy your txn Id</small>
+    
     <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
     <div>
       order amount ₦{{job.price}}
@@ -27,7 +29,7 @@
     <input type="hidden" name="meta[token]" value="54" />
     <input type="hidden" name="redirect_url" value="https://demoredirect.localhost:8000/" />
     <div class="col-auto">
-    <button class="btn btn-success" type="submit" id="start-payment-button">Pay Now with Flutter</button><small>charges are in NGN</small>
+    <button class="btn btn-success" type="submit" id="start-payment-button">Pay Now with Flutter</button><small>Preffered!!</small>
      </div>   
 </form>
 
