@@ -132,3 +132,17 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STRIPE_PUBLIC_KEY = 'pk_test_51KbZ48LsQsJwvv6rp1w2cLnidytH20xqiLcphSCBHxZ7sIP3IMFX49LA4QakIJhTzslCQTqhW9MYfXbZtc2fZorI00vDb0YbcN'
 STRIPE_SECRET_KEY = 'sk_test_51KbZ48LsQsJwvv6rE8S3PsNiZw6k9LiK0wt7kkiXmMeh1sL4rS2X3qI2hqV6LE4yPxA5rUuPbysGErExlKruePjC004v6MzHjo'
+
+
+
+
+
+CORS_REPLACE_HTTPS_REFERER      = False
+HOST_SCHEME                     = "http://"
+SECURE_PROXY_SSL_HEADER         = None
+SECURE_SSL_REDIRECT             = False
+SESSION_COOKIE_SECURE           = False
+CSRF_COOKIE_SECURE              = False
+SECURE_HSTS_SECONDS             = None
+SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
+SECURE_FRAME_DENY               = False

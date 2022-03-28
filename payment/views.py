@@ -68,11 +68,22 @@ class ProductLandingView(TemplateView):
         })
         return context
 
-class PaymentSucces(TemplateView):
-    template_name = 'payment/success.html'
 
-class PaymentFails(TemplateView):
-    template_name = 'payment/Failure.html'
+class PaymentSucces(View):
+    def post(self,request,*args, **kwargs):#here and below
+
+        return render(request,'payment/success.html') 
+        
+    def get(self,request,*args, **kwargs): #there are lot to learn here both post and get are define
+
+        return render(request,'payment/success.html') 
+
+
+
+class PaymentFails(View):
+    def post(self,request,*args, **kwargs):
+
+        return render(request,'payment/Failure.html') 
 
 class RemitaPayment(TemplateView):
     template_name = 'payment/remita.html'
